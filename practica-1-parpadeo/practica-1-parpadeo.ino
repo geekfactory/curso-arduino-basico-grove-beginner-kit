@@ -7,14 +7,11 @@
    Geek Factory - "Dale vuelo a tus proyectos"
    www.geekfactory.mx
 
-   Didaktikos - "Super Creativos"
-   www.didaktikos.mx
-
    CONSULTA EL ARCHIVO LICENCIA.TXT PARA CONOCER MÁS SOBRE LOS DERECHOS DE DISTRIBUCIÓN DE ESTE
    MATERIAL. PUBLICADO BAJO LICENCIA ATTRIBUTION-NONCOMMERCIAL-SHAREALIKE 4.0 INTERNATIONAL
    (CC BY-NC-SA 4.0).
 
-   LECCIÓN 1: Parpadeo de led
+   PRÁCTICA 1: Parpadeo de led
 
    Este programa hace parpadear el led conectado al pin 4 de la tarjeta grove beginer kit.
    Es el programa más basico que se puede realizar con un microcontrolador.

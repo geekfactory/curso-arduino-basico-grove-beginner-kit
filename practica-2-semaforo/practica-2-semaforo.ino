@@ -7,14 +7,11 @@
    Geek Factory - "Dale vuelo a tus proyectos"
    www.geekfactory.mx
 
-   Didaktikos - "Super Creativos"
-   www.didaktikos.com.mx
-
    CONSULTA EL ARCHIVO LICENCIA.TXT PARA CONOCER MÁS SOBRE LOS DERECHOS DE DISTRIBUCIÓN DE ESTE
    MATERIAL. PUBLICADO BAJO LICENCIA ATTRIBUTION-NONCOMMERCIAL-SHAREALIKE 4.0 INTERNATIONAL
    (CC BY-NC-SA 4.0).
 
-   LECCIÓN 2: Semaforo
+   PRACTICA 2: Semaforo
 
    Simulación de un semáforo. Se encienden 3 leds en secuencia tal cual ocurre en un semáforo en la
    calle. Se utilizan las instrucciones básicas de configuración de puertos y control de salidas así
@@ -23,16 +20,16 @@
 
 
 // declaramos una variable para guardar el numero de pin en donde tenemos conectado cada LED
-const int ledverde = 4;
-const int ledamarillo = 5;
-const int ledrojo = 6;
+const int ledverde = 11;
+const int ledamarillo = 12;
+const int ledrojo = 13;
 
 
 /**
    Función setup: se ejecuta una vez cuando encendemos el arduino
 */
 void setup() {
-  // configurar pines 4, 5 y 6 como salidas
+  // configurar pines donde se conectan los LED como salidas
   pinMode(ledverde, OUTPUT);
   pinMode(ledamarillo, OUTPUT);
   pinMode(ledrojo, OUTPUT);
