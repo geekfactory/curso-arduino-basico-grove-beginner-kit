@@ -13,14 +13,15 @@
 
    LECCIÓN 6: Estación metereológica programa completo
 
-   Este programa configura la interfaz serial del Arduino y envía un mensaje a través de esta
-   para visualizarlo en el monitor serial. Este programa nos muestra las operaciones básicas en
-   el puerto serie.
+   Este programa configura los sensores de la tarjeta Grove Beginner Kit y toma las lecturas de
+   los sensores ambientales. Posteriormente las lecturas se muestran en la pantalla OLED de la
+   tarjeta de desarrollo.
 */
 #include <DHT.h>
 #include <Adafruit_BMP280.h>
+#include <U8x8lib.h>
 
-const int pinSensorHumedad = 4;
+const int pinSensorHumedad = 3;
 
 /**
  * Objeto para el sensor de presión barométrica y sensor de temperatura
@@ -33,6 +34,13 @@ Adafruit_BMP280 barometro;
  * El segundo parámetro es el tipo de sensor (DHT11, DHT22, etc.)
  */
 DHT higrometro(pinSensorHumedad, DHT11);
+
+/**
+ * Objeto para realizar la interfaz con la pantalla OLED de 128x16
+ * este constructor se utiliza para los módulos genéricos conectados
+ * por I2C.
+ */
+U8X8_SSD1306_128X64_NONAME_HW_I2C oled(U8X8_PIN_NONE);
 
 /**
  * Variables de tipo float para almacenar la lectura de los sensores
@@ -53,6 +61,11 @@ void setup() {
     while (1)
       ;
   }
+
+  // inicializar la pantalla OLED
+  oled.begin();
+  oled.setFlipMode(1);
+  oled.setFont(u8x8_font_chroma48medium8_r);
 }
 
 void loop() {
@@ -65,4 +78,27 @@ void loop() {
   presion = barometro.readPressure();
   // leer la humedad relativa (DHT11)
   humedad = higrometro.readHumidity();
+
+  // escribir las mediciones a la pantalla OLED
+
+  // mover el cursor al inicio de la pantalla
+  oled.setCursor(0, 0);
+  // escribir la leyenda "Temperatura"
+  oled.print("Temperatura");
+  // mover el cursor a la segunda línea de la pantalla
+  oled.setCursor(0, 1);
+  // escribir el valor de la variable
+  oled.print(temperatura);
+
+  // repetimos el procedimiento con la variable de humedad...
+  oled.setCursor(0, 3);
+  oled.print("Humedad");
+  oled.setCursor(0, 4);
+  oled.print(humedad);
+
+  // ...finalmente con la presión atmosférica
+  oled.setCursor(0, 6);
+  oled.print("Presion");
+  oled.setCursor(0, 7);
+  oled.print(presion);
 }
